@@ -17,6 +17,7 @@ class GoogleMapConfig(fromJSONObject: JSONObject) {
     var devicePixelRatio: Float = 1.00f
     var styles: String? = null
     var mapId: String? = null
+    var disableDefaultUI: Boolean = false
 
     init {
         if (!fromJSONObject.has("width")) {
@@ -59,6 +60,10 @@ class GoogleMapConfig(fromJSONObject: JSONObject) {
             )
         }
 
+        if (fromJSONObject.has("disableDefaultUI")) {
+            disableDefaultUI = fromJSONObject.getBoolean("disableDefaultUI")
+        }
+
         val centerJSONObject = fromJSONObject.getJSONObject("center")
 
         if (!centerJSONObject.has("lat") || !centerJSONObject.has("lng")) {
@@ -90,6 +95,10 @@ class GoogleMapConfig(fromJSONObject: JSONObject) {
         googleMapOptions = GoogleMapOptions().camera(cameraPosition).liteMode(liteMode)
         if (mapId != null) {
             googleMapOptions?.mapId(mapId!!)
+        }
+        if (disableDefaultUI) {
+            googleMapOptions.compassEnabled(false);
+            googleMapOptions.mapToolbarEnabled(false);
         }
     }
 }

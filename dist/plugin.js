@@ -2,9 +2,9 @@ var capacitorCapacitorGoogleMaps = (function (exports, core, markerclusterer) {
     'use strict';
 
     const CapacitorGoogleMaps = core.registerPlugin('CapacitorGoogleMaps', {
-        web: () => Promise.resolve().then(function () { return web; }).then((m) => new m.CapacitorGoogleMapsWeb()),
+        web: () => Promise.resolve().then(function () { return web; }).then(m => new m.CapacitorGoogleMapsWeb()),
     });
-    CapacitorGoogleMaps.addListener('isMapInFocus', (data) => {
+    CapacitorGoogleMaps.addListener('isMapInFocus', data => {
         var _a;
         const x = data.x;
         const y = data.y;
@@ -162,7 +162,8 @@ var capacitorCapacitorGoogleMaps = (function (exports, core, markerclusterer) {
                                     onDisplay();
                                 }
                             }
-                            else if (lastState.width !== mapRect.width || lastState.height !== mapRect.height) {
+                            else if (lastState.width !== mapRect.width ||
+                                lastState.height !== mapRect.height) {
                                 onResize();
                             }
                         }
@@ -196,7 +197,7 @@ var capacitorCapacitorGoogleMaps = (function (exports, core, markerclusterer) {
             return newMap;
         }
         static async getElementBounds(element) {
-            return new Promise((resolve) => {
+            return new Promise(resolve => {
                 let elementBounds = element.getBoundingClientRect();
                 if (elementBounds.width == 0) {
                     let retries = 0;
@@ -621,7 +622,8 @@ var capacitorCapacitorGoogleMaps = (function (exports, core, markerclusterer) {
                 this.onClusterInfoWindowClickListener.remove();
             }
             if (callback) {
-                this.onClusterInfoWindowClickListener = await CapacitorGoogleMaps.addListener('onClusterInfoWindowClick', this.generateCallback(callback));
+                this.onClusterInfoWindowClickListener =
+                    await CapacitorGoogleMaps.addListener('onClusterInfoWindowClick', this.generateCallback(callback));
             }
             else {
                 this.onClusterInfoWindowClickListener = undefined;
@@ -790,7 +792,8 @@ var capacitorCapacitorGoogleMaps = (function (exports, core, markerclusterer) {
                 this.onMyLocationButtonClickListener.remove();
             }
             if (callback) {
-                this.onMyLocationButtonClickListener = await CapacitorGoogleMaps.addListener('onMyLocationButtonClick', this.generateCallback(callback));
+                this.onMyLocationButtonClickListener =
+                    await CapacitorGoogleMaps.addListener('onMyLocationButtonClick', this.generateCallback(callback));
             }
             else {
                 this.onMyLocationButtonClickListener = undefined;
@@ -1366,7 +1369,9 @@ var capacitorCapacitorGoogleMaps = (function (exports, core, markerclusterer) {
             if (marker.iconUrl) {
                 iconImage = {
                     url: marker.iconUrl,
-                    scaledSize: marker.iconSize ? new google.maps.Size(marker.iconSize.width, marker.iconSize.height) : null,
+                    scaledSize: marker.iconSize
+                        ? new google.maps.Size(marker.iconSize.width, marker.iconSize.height)
+                        : null,
                     anchor: marker.iconAnchor
                         ? new google.maps.Point(marker.iconAnchor.x, marker.iconAnchor.y)
                         : new google.maps.Point(0, 0),

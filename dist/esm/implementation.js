@@ -1,8 +1,8 @@
 import { registerPlugin } from '@capacitor/core';
 const CapacitorGoogleMaps = registerPlugin('CapacitorGoogleMaps', {
-    web: () => import('./web').then((m) => new m.CapacitorGoogleMapsWeb()),
+    web: () => import('./web').then(m => new m.CapacitorGoogleMapsWeb()),
 });
-CapacitorGoogleMaps.addListener('isMapInFocus', (data) => {
+CapacitorGoogleMaps.addListener('isMapInFocus', data => {
     var _a;
     const x = data.x;
     const y = data.y;

@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import { MarkerClusterer, SuperClusterAlgorithm } from '@googlemaps/markerclusterer';
+import { MarkerClusterer, SuperClusterAlgorithm, } from '@googlemaps/markerclusterer';
 import { MapType, LatLngBounds } from './definitions';
 export class CapacitorGoogleMapsWeb extends WebPlugin {
     constructor() {
@@ -472,7 +472,9 @@ export class CapacitorGoogleMapsWeb extends WebPlugin {
         if (marker.iconUrl) {
             iconImage = {
                 url: marker.iconUrl,
-                scaledSize: marker.iconSize ? new google.maps.Size(marker.iconSize.width, marker.iconSize.height) : null,
+                scaledSize: marker.iconSize
+                    ? new google.maps.Size(marker.iconSize.width, marker.iconSize.height)
+                    : null,
                 anchor: marker.iconAnchor
                     ? new google.maps.Point(marker.iconAnchor.x, marker.iconAnchor.y)
                     : new google.maps.Point(0, 0),

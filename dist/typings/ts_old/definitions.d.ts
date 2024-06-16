@@ -351,7 +351,7 @@ export interface Marker {
 /**
  * The callback function to be called when map events are emitted.
  */
-export type MapListenerCallback<T> = (data: T) => void;
+export declare type MapListenerCallback<T> = (data: T) => void;
 export interface MapReadyCallbackData {
     mapId: string;
 }

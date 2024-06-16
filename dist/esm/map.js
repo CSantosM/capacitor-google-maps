@@ -101,7 +101,8 @@ export class GoogleMap {
                                 onDisplay();
                             }
                         }
-                        else if (lastState.width !== mapRect.width || lastState.height !== mapRect.height) {
+                        else if (lastState.width !== mapRect.width ||
+                            lastState.height !== mapRect.height) {
                             onResize();
                         }
                     }
@@ -135,7 +136,7 @@ export class GoogleMap {
         return newMap;
     }
     static async getElementBounds(element) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             let elementBounds = element.getBoundingClientRect();
             if (elementBounds.width == 0) {
                 let retries = 0;
@@ -560,7 +561,8 @@ export class GoogleMap {
             this.onClusterInfoWindowClickListener.remove();
         }
         if (callback) {
-            this.onClusterInfoWindowClickListener = await CapacitorGoogleMaps.addListener('onClusterInfoWindowClick', this.generateCallback(callback));
+            this.onClusterInfoWindowClickListener =
+                await CapacitorGoogleMaps.addListener('onClusterInfoWindowClick', this.generateCallback(callback));
         }
         else {
             this.onClusterInfoWindowClickListener = undefined;
@@ -729,7 +731,8 @@ export class GoogleMap {
             this.onMyLocationButtonClickListener.remove();
         }
         if (callback) {
-            this.onMyLocationButtonClickListener = await CapacitorGoogleMaps.addListener('onMyLocationButtonClick', this.generateCallback(callback));
+            this.onMyLocationButtonClickListener =
+                await CapacitorGoogleMaps.addListener('onMyLocationButtonClick', this.generateCallback(callback));
         }
         else {
             this.onMyLocationButtonClickListener = undefined;

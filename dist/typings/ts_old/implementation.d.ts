@@ -122,7 +122,7 @@ export interface MapBoundsContainsArgs {
     bounds: LatLngBounds;
     point: LatLng;
 }
-export type MapBoundsExtendArgs = MapBoundsContainsArgs;
+export declare type MapBoundsExtendArgs = MapBoundsContainsArgs;
 export interface EnableClusteringArgs {
     id: string;
     minClusterSize?: number;

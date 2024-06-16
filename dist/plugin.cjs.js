@@ -24,9 +24,9 @@ function _interopNamespace(e) {
 }
 
 const CapacitorGoogleMaps = core.registerPlugin('CapacitorGoogleMaps', {
-    web: () => Promise.resolve().then(function () { return web; }).then((m) => new m.CapacitorGoogleMapsWeb()),
+    web: () => Promise.resolve().then(function () { return web; }).then(m => new m.CapacitorGoogleMapsWeb()),
 });
-CapacitorGoogleMaps.addListener('isMapInFocus', (data) => {
+CapacitorGoogleMaps.addListener('isMapInFocus', data => {
     var _a;
     const x = data.x;
     const y = data.y;
@@ -184,7 +184,8 @@ class GoogleMap {
                                 onDisplay();
                             }
                         }
-                        else if (lastState.width !== mapRect.width || lastState.height !== mapRect.height) {
+                        else if (lastState.width !== mapRect.width ||
+                            lastState.height !== mapRect.height) {
                             onResize();
                         }
                     }
@@ -218,7 +219,7 @@ class GoogleMap {
         return newMap;
     }
     static async getElementBounds(element) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             let elementBounds = element.getBoundingClientRect();
             if (elementBounds.width == 0) {
                 let retries = 0;
@@ -643,7 +644,8 @@ class GoogleMap {
             this.onClusterInfoWindowClickListener.remove();
         }
         if (callback) {
-            this.onClusterInfoWindowClickListener = await CapacitorGoogleMaps.addListener('onClusterInfoWindowClick', this.generateCallback(callback));
+            this.onClusterInfoWindowClickListener =
+                await CapacitorGoogleMaps.addListener('onClusterInfoWindowClick', this.generateCallback(callback));
         }
         else {
             this.onClusterInfoWindowClickListener = undefined;
@@ -812,7 +814,8 @@ class GoogleMap {
             this.onMyLocationButtonClickListener.remove();
         }
         if (callback) {
-            this.onMyLocationButtonClickListener = await CapacitorGoogleMaps.addListener('onMyLocationButtonClick', this.generateCallback(callback));
+            this.onMyLocationButtonClickListener =
+                await CapacitorGoogleMaps.addListener('onMyLocationButtonClick', this.generateCallback(callback));
         }
         else {
             this.onMyLocationButtonClickListener = undefined;
@@ -1388,7 +1391,9 @@ class CapacitorGoogleMapsWeb extends core.WebPlugin {
         if (marker.iconUrl) {
             iconImage = {
                 url: marker.iconUrl,
-                scaledSize: marker.iconSize ? new google.maps.Size(marker.iconSize.width, marker.iconSize.height) : null,
+                scaledSize: marker.iconSize
+                    ? new google.maps.Size(marker.iconSize.width, marker.iconSize.height)
+                    : null,
                 anchor: marker.iconAnchor
                     ? new google.maps.Point(marker.iconAnchor.x, marker.iconAnchor.y)
                     : new google.maps.Point(0, 0),

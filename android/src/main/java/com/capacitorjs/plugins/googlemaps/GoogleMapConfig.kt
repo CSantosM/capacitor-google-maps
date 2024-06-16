@@ -97,8 +97,8 @@ class GoogleMapConfig(fromJSONObject: JSONObject) {
             googleMapOptions?.mapId(mapId!!)
         }
         if (disableDefaultUI) {
-            googleMapOptions.compassEnabled(false);
-            googleMapOptions.mapToolbarEnabled(false);
+            googleMapOptions?.compassEnabled(false);
+            googleMapOptions?.mapToolbarEnabled(false);
         }
     }
 }
